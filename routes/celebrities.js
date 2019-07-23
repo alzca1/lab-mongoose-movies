@@ -13,4 +13,14 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+router.get('/:id', async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const celebrity = await Celebrity.findById(id);
+    res.render('celebrities/celebrityDetails', celebrity);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = router;
